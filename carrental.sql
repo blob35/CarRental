@@ -21,31 +21,32 @@ CREATE TABLE OFFER_DETAILS
   Status VARCHAR(10) NOT NULL
 );
 
-CREATE TABLE RESERVATION
-(
-  Reservation_ID INT PRIMARY KEY,
-  Start_Date DATE NOT NULL,
-  End_Date DATE NOT NULL,
-  Meter_Start INT NOT NULL,
-  Meter_End INT,
-  Rent_Amount INT NOT NULL,
-  Status VARCHAR(10) NOT NULL,
-  License_No VARCHAR(15),
-  License_plate CHAR(20) NOT NULL,
-  Promo_Code VARCHAR(15),
-  Payment_ID INT,
-  USER_ID INT,
-  CONSTRAINT License_plateRESERVATIONFK
-  FOREIGN KEY (License_plate) REFERENCES CAR(License_plate)
-              ON DELETE CASCADE,
-  CONSTRAINT PROMORESERVATIONFK
-  FOREIGN KEY (Promo_Code) REFERENCES OFFER_DETAILS(Promo_Code)
-              ON DELETE CASCADE,
-  FOREIGN KEY (Payment_id) REFERENCES Payment(Payment_id)
-			  ON DELETE CASCADE,
-  FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID)
-			  ON DELETE CASCADE
-);
+CREATE TABLE RESERVATION (
+       Reservation_ID INT PRIMARY KEY,
+       Start_Date DATE NOT NULL,
+       End_Date DATE NOT NULL,
+       Meter_Start INT NOT NULL,
+       Meter_End INT,
+       Rent_Amount INT NOT NULL,
+       Status VARCHAR(10) NOT NULL,
+       License_No VARCHAR(15),
+       License_plate CHAR(20) NOT NULL,
+       Promo_Code VARCHAR(15),
+       Payment_ID INT,
+       USER_ID INT,
+       CONSTRAINT License_plateRESERVATIONFK
+         FOREIGN KEY (License_plate) REFERENCES CAR(License_plate)
+         ON DELETE CASCADE,
+       CONSTRAINT PromoCodeRESERVATIONFK
+         FOREIGN KEY (Promo_Code) REFERENCES OFFER_DETAILS(Promo_Code)
+         ON DELETE CASCADE,
+       CONSTRAINT PaymentRESERVATIONFK
+         FOREIGN KEY (Payment_ID) REFERENCES Payment(Payment_ID)
+         ON DELETE CASCADE,
+       CONSTRAINT UserRESERVATIONFK
+         FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID)
+         ON DELETE CASCADE
+     );
 
 CREATE TABLE PAYMENT
 (
@@ -59,12 +60,13 @@ CREATE TABLE PAYMENT
 Create Table User
 (
 	USER_ID INT Primary key,
-    Name varchar(40),
-    email varchar(40),
-    date_of_birth date,
-    phone int,
-    address varchar(50),
-    License_No varchar(30)
+    	Name varchar(40),
+    	email varchar(40),
+	Password varchar(255) NOT NULL,
+    	date_of_birth date,
+    	phone int,
+    	address varchar(50),
+    	License_No varchar(30)
 );
 Create Table Reference
 (
