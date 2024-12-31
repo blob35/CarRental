@@ -25,7 +25,10 @@
 
      <label for="nid"><b>Enter NID Number</b></label><br>
     <input type="ssn" placeholder="NID Number" name="nid" id="nid" required><br>
-
+      
+    <label for="license"><b>Enter License Number</b></label><br>
+    <input type="ssn" placeholder="License Number" name="license" id="license" required><br>
+      
     <label for="email"><b>Email</b></label><br>
     <input type="email" placeholder="Enter Email" name="email" id="email" required>
     <br>
